@@ -1,13 +1,22 @@
 package com.example.model;
 
-import java.util.Date;
+import javax.persistence.*;
 
+@Entity
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
-    private String status;
-    private Date creationDate;
+
+    private String titulo;
+    private String descricao;
+
+    public Task() {}
+
+    public Task(String titulo, String descricao) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+    }
 
     public Long getId() {
         return id;
@@ -17,35 +26,19 @@ public class Task {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

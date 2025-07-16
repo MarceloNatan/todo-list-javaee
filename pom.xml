@@ -29,7 +29,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.23</version>
+            <version>8.0.33</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -54,6 +54,11 @@
             <artifactId>byte-buddy-agent</artifactId>
             <version>1.14.12</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
     </dependencies>
 

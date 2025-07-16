@@ -1,28 +1,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>To-Do List</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>ToDo List</title>
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <form action="task" method="post">
-        <input type="text" name="title" placeholder="Task Title" required>
-        <textarea name="description" placeholder="Task Description"></textarea>
-        <button type="submit">Add Task</button>
-    </form>
-    <h2>Tasks</h2>
+    <h1>Lista de Tarefas</h1>
     <ul>
-        <c:forEach var="task" items="${tasks}">
+        <c:forEach var="tarefa" items="${tarefas}">
             <li>
-                <strong>${task.title}</strong> - ${task.description}
-                <form action="task/${task.id}" method="post" style="display:inline;">
-                    <button type="submit">Delete</button>
+                ${tarefa.titulo} - ${tarefa.descricao}
+                <form action="tasks" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="${tarefa.id}" />
+                    <input type="text" name="titulo" value="${tarefa.titulo}" />
+                    <input type="text" name="descricao" value="${tarefa.descricao}" />
+                    <button type="submit">Editar</button>
                 </form>
-                <a href="edit/${task.id}">Edit</a>
+                <form action="tasks" method="post" style="display:inline;" onsubmit="return confirm('Excluir?');">
+                    <input type="hidden" name="id" value="${tarefa.id}" />
+                    <input type="hidden" name="_method" value="delete" />
+                    <button type="submit">Excluir</button>
+                </form>
             </li>
         </c:forEach>
     </ul>
+    <h2>Cadastrar Tarefa</h2>
+    <form action="tasks" method="post">
+        <input type="text" name="titulo" placeholder="Título" required />
+        <input type="text" name="descricao" placeholder="Descrição" required />
+        <button type="submit">Cadastrar</button>
+    </form>
 </body>
 </html>
